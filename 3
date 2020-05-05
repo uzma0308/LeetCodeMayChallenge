@@ -1,0 +1,38 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        
+        HashMap<Character, Integer> storage = new HashMap<Character, Integer>();
+        for( int i =0; i < magazine.length() ; i++)
+        {
+            char temp = magazine.charAt(i);
+            if(storage.containsKey(temp))
+            {
+                int x = storage.get(temp);
+                storage.put(temp,++x);
+            } else {
+                storage.put(temp,1);
+            }
+        }
+        for( int i =0; i < ransomNote.length() ; i++)
+        {
+            char temp = ransomNote.charAt(i);
+            if(storage.containsKey(temp))
+            {
+                int x = storage.get(temp);
+                if(x == 0)
+                {
+                    return false;
+                } else {
+                    storage.put(temp,--x);
+                }
+            } else 
+            {
+                return false;
+            }
+        }
+        return true;
+        
+        
+    }
+    
+}
