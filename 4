@@ -1,0 +1,28 @@
+class Solution {
+    public int findComplement(int num) {
+        
+        String binaryString = "";
+        int rem;
+        char c;
+        int complement = 0;
+        while ( num > 0)
+        {
+            rem = num % 2;
+            if(rem == 0)
+            {
+                rem = 1;
+            } else {
+                rem = 0;
+            }
+            binaryString =  binaryString + rem;
+            
+            num = num/2;
+        }
+        for(int i = 0 ; i < binaryString.length(); i++) {
+            c = binaryString.charAt(i);
+            
+            complement = complement + ( Character.getNumericValue(c) * (int) Math.pow(2, i));  
+        }
+        return complement;
+    }
+}
