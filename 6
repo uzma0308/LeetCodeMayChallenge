@@ -1,0 +1,28 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        
+        if(nums.length == 1)
+        {
+            return nums[0];
+        }
+        int floor = (int)(Math.floor(nums.length/2));
+        int val,x;
+        HashMap <Integer,Integer> hash = new HashMap <Integer,Integer>();
+        for(int i=0; i<nums.length; i++)
+        {
+            val = nums[i];
+            if(hash.containsKey(val))
+            {
+                x = hash.get(val);
+                if(x == floor)
+                {
+                   return val;
+                }
+                hash.put(val,++x);
+            } else {
+                hash.put(val,1);
+            }
+        }
+        return 0;
+    }
+}
